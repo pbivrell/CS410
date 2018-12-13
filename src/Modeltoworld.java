@@ -23,14 +23,14 @@ public class Modeltoworld{
         }
 
         Scene scene = new Scene();
-        try { 
-            scene.processFile(new Scanner(new File(args[0])));
-        }catch(IOException e){
-            System.out.printf("[Fatal Error]: failed to read file [%s] reason: %s\n", args[0], e); 
-            System.exit(-1);
-        }
+        //try { 
+            //scene.processDriver(new Scanner(new File(args[0])));
+        //}catch(IOException e){
+        //    System.out.printf("[Fatal Error]: failed to read file [%s] reason: %s\n", args[0], e); 
+        //    System.exit(-1);
+        //}
 
-        scene.writeFile(args[0]);
+        //scene.writeFile(args[0]);
 
     }
 }

@@ -1,0 +1,81 @@
+package cs410.matrix;
+
+import Jama.Matrix;
+
+public MatrixJama implements Matrix {
+
+    private Jama.Matrix _matrix;
+    
+    public static MatrixJama Identity(int size){
+        return new MatrixJama(Jama.Matrix(size, size).getArray());
+    }
+
+    public MatrixJama(double[][] raw){
+        this._matrix = Jama.Matrix(raw);
+    }
+
+    public MatrixJama(double[] raw){
+        this._matrix = Jama.Matrix(raw,1);
+    }
+
+    public MatrixJama subtract(Matrix o){
+        assert (o instanceof(MatrixJama)): " Matrix is not type MatrixJama";
+        MatrixJama m = (MatrixJama) o;
+        double[] a, b;
+        a = this._matrix.GetArray();
+        b = m.GetArray();
+        assert(a.length == b.length);
+        double[] res = new double[a.length];
+        for(int i = 0; i < a.length; i++){
+            res[i] = a[i] - b[i];
+        }
+        return new MatrixJama(res);
+        //assert False: " Matrix subtract() is not defined from MatrixJama";
+    }
+
+    public MatrixJama add(Matrix o){
+        assert (o instanceof(MatrixJama)): " Matrix is not type MatrixJama";
+        MatrixJama m = (MatrixJama) o;
+        assert False: " Matrix add() is not defined from MatrixJama";
+    }
+
+    public MatrixJama crossProduct(Matrix o){
+        assert(o instanceof MatrixJama);
+        MatrixJama m = (MatrixJama =) o;
+
+        double u1, u2, u3, v1, v2, v3;
+        u1 = u.get(0,0); u2 = u.get(0,1); u3 = u.get(0,2);
+        v1 = v.get(0,0); v2 = v.get(0,1); v3 = v.get(0,2);
+
+        double uvi, uvj, uvk;
+        uvi = u2 * v3 - v2 * u3;
+        uvj = v1 * u3 - u1 * v3;
+        uvk = u1 * v2 - v1 * u2;
+
+        return new MatrixJama(new double[] { uvi, uvj, uvk });
+    }
+    public MatrixJama makeUnitLength(){
+        if(this._matrix.norm1() == 0){
+            return this;
+        }
+        return this.multiplyScalar(1/this._matrix.norm2());
+    }
+
+    public String toString();
+
+    public Matrix multiplyScalar(double scalar);
+
+    public Matrix homogeneous(); 
+
+    public Matrix set(int i, int j, double value);
+
+    public Matrix get(int i, int j);
+
+    public Matrix copy(Matrix o);
+
+    public Matrix transpose();
+
+    public Matrix columns();
+
+    public Matrix rows(); 
+}
