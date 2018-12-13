@@ -1,5 +1,5 @@
 ### README
-Paul Bivrell - CS410 FA2018 - PA2
+Paul Bivrell - CS410 FA2018 - PA1
 
 To compile:
 `make`
@@ -7,14 +7,16 @@ To compile:
 _Compiles src/ into bin/ directory_
 
 To run:
-```
-java -cp "/lib/Jama-1.0.3.jar:bin" Raytracer driver_file out_file
-```
 
-Drivers:
-driver00.txt: Provided Cube
-driver01.txt: Provided Cow [Runs in 17mins]
-driver02.txt: Stacked Cubes
-driver03.txt: Sphere example
-driver04.txt: Single triangle
+Requirements:
+* .obj files must be in the same directory as where you run the java command
+
+`./runner.sh driver_file`
+_This executes a bash script which runs the java program below_
+
+OR
+```
+java -cp "/lib/Jama-1.0.3.jar:bin" Modeltoworld driver_file
+```
+__Note the results will appear in the running directory under a directory driverXX as specified in the assignment__
 
